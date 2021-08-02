@@ -12,9 +12,14 @@ const forecast = (latitude, longitude, callback) => {
       callback("Unable to find location");
     } else {
       const data = res.body.current;
+
       callback(
         undefined,
-        `Its ${data.weather_descriptions[0]}. It is currently ${data.temperature} degrees out. Although it feels like ${data.feelslike} degrees out.`
+        `${data.is_day ? "Todays" : "Tonights"} Weather Report : Its ${
+          data.weather_descriptions[0]
+        }. It is currently ${
+          data.temperature
+        } degrees out. Although it feels like ${data.feelslike} degrees out.`
       );
     }
   });
